@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study Game</title>
+<style>
+body{font-family:sans-serif;background:#111827;color:white;text-align:center;padding:20px}
+.card{background:white;color:black;padding:20px;border-radius:15px;max-width:400px;margin:20px auto}
+button{padding:12px;margin:8px;border:none;border-radius:10px;background:#4F46E5;color:white;font-size:16px;width:90%}
+</style></head><body>
+<h1>🧠 Study Quiz Game</h1>
+<div class="card"><h2 id="q"></h2><div id="opt"></div><p id="sc"></p></div>
+<script>
+const data=[{q:"Ganga kahan se nikalti hai?",a:["Gangotri","Yamunotri","Kedarnath"],c:0},{q:"2 x 9 =?",a:["17","18","19"],c:1},{q:"Computer ka brain?",a:["CPU","Mouse","Keyboard"],c:0},{q:"Taj Mahal kahan hai?",a:["Delhi","Agra","Jaipur"],c:1}];
+let i=0,s=0;function load(){let d=data[i];document.getElementById("q").innerText=(i+1)+". "+d.q;let h="";d.a.forEach((x,j)=>{h+=`<button onclick="check(${j})">${x}</button>`});document.getElementById("opt").innerHTML=h;document.getElementById("sc").innerText=`Score: ${s}/${data.length}`;}
+function check(j){if(j==data[i].c){s++;alert("Sahi! ✅")}else{alert("Galat ❌")}i++;if(i<data.length)load();else{document.getElementById("q").innerText=`Game Khatam! Score ${s}/${data.length}`;document.getElementById("opt").innerHTML=`<button onclick="location.reload()">Fir se Khelo</button>`}}
+load();
+</script></body></html>
